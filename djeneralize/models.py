@@ -16,7 +16,7 @@
 import re
 
 from django.db.models.base import ModelBase, Model
-from django.db.models.fields import FieldDoesNotExist, TextField
+from django.db.models.fields import FieldDoesNotExist, CharField
 from django.dispatch import Signal
 
 from djeneralize import PATH_SEPERATOR
@@ -176,7 +176,7 @@ class BaseGeneralizationModel(Model):
 
     __metaclass__ = BaseGeneralizationMeta
 
-    specialization_type = TextField(db_index=True)
+    specialization_type = CharField(db_index=True, max_length=255)
     """Field to store the specialization"""
 
     def __init__(self, *args, **kwargs):
